@@ -1,7 +1,6 @@
 import adminLayout from '@/layouts/Admin';
 import httpAxios from '@/utils/http-axios';
 import moment from 'moment';
-
 export default {
     name: 'edit_form',
     components: {
@@ -9,12 +8,22 @@ export default {
     },
     data() {
         return {
-             form : []
+             form : [],
         };
     },
     methods: {
+        getData(){
+            const id = this.$route.query.id;
+            httpAxios({
+                url: '/submit_case/'+id,
+                method: 'GET',
+            }).then(async (response) => {
+                this.form = response.data;
+            });
+        },
         submit() {
             const self = this.form;
+            const id = this.$route.query.id;
             const data = {
                 "owner_id": 2,
                 "street_no": self.street_no,
@@ -37,36 +46,17 @@ export default {
                 "indication_date": moment(String(self.indication_date)).format()
             };
             httpAxios({
-                url: '/submit_case/create_submit_case'+'?=2',
-                method: 'POST',
+                url: '/submit_case/update_submit_case',
+                method: 'PUT',
+                params : { id : id },
                 data: data ,
-                headers: { 
-                            'Content-Type' : 'application/json',
-                            'Accept' : 'application/json',
-                            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJyYW1ib0BnbWFpbDEuY29tIiwiZXhwIjoxNjQwNDU2NjI0fQ.QdauPejPNMIn2F3m1iPf0zxw6l4lKjIXT5-Brk6jjKQ'
-                        },
               }).then(async (response) => {
-                
-                return response;
+                this.indication = response.data;
               });
         },
-        getData(){
-            httpAxios({
-                url: '/submit_case/'+'2',
-                method: 'GET',
-                headers: { 
-                            'Content-Type' : 'application/json',
-                            'Accept' : 'application/json',
-                            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJyYW1ib0BnbWFpbDEuY29tIiwiZXhwIjoxNjQwNDU2NjI0fQ.QdauPejPNMIn2F3m1iPf0zxw6l4lKjIXT5-Brk6jjKQ'
-                        },
-              }).then(async (response) => {
-                  this.form = response.data;
-              });
-        }
     },
     mounted(){
         this.getData();
-        console.log(this.getData());
     } 
 };
 

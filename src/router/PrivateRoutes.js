@@ -47,7 +47,7 @@ export default [
     },
   },
   {
-    path: '/admin/indication-plus/edit/',
+    path: '/admin/indication-plus/edit',
     component: edit_form,
     name: 'admin.indication-plus.edit',
     meta: {

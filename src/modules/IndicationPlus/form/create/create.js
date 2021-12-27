@@ -59,7 +59,9 @@ export default {
                 method: 'POST',
                 data: data,
               }).then(async (response) => {
-                return response;
+                if(response.data){
+                    this.$router.back();
+                }    
               });
         },
     }  

@@ -1,5 +1,6 @@
 import adminLayout from '@/layouts/Admin';
 import httpAxios from '@/utils/http-axios';
+import moment from 'moment';
 
 export default {
   name: 'indication_plus',
@@ -9,7 +10,6 @@ export default {
   data() {
     return {
         indication_plus : [],
-        id: null
       }
   },
   methods: {
@@ -18,18 +18,21 @@ export default {
         url: '/submit_case/get_all_submit_case/',
         method: 'GET',
       }).then(async (response) => {
+          response.data.forEach((e,i) => {
+              response.data[i].due_date = moment(String(e.due_date)).format("MMM Do YY");
+              response.data[i].created_at = moment(String(e.created_at)).format("MMM Do YY");
+          });
           this.indication_plus = response.data;
       });
     },
-    delete(){
-      console.log(this.id);
+    deleteItem(id){
       httpAxios({
         url: '/submit_case/delete_submit_case',
         method: 'DELETE',
-        params:{ id : 3 }
+        params:{ id : id }
       }).then(async (response) => {
           if(response.data == 'Deleted successfully.'){
-            // this.$alert("Hello Vue Simple Alert.");
+            alert("Deleted successfully.");
           }
       });
     }
