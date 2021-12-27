@@ -9,12 +9,25 @@ export default {
       email: null,
       password: null,
       phone: null,
+      validation: {
+        invalid: {
+  //        firstName: 'First name NOT OK!',
+        },
+        valid: {
+  //        firstName: 'First name OK!',
+        },
+      }
     };
   },
   components: {
     guestLayout,
   },
   methods: {
+    clearValidation: function(field) {
+      this.validation.valid[field] = '';
+      this.validation.invalid[field] = '';
+      this.$forceUpdate();
+    },
     register() {
       const self = this;
       const data = {
@@ -28,7 +41,17 @@ export default {
         method: 'POST',
         data: data,
       }).then(async (response) => {
-          console.log(response);
+        if(!this.name){
+          this.validation.invalid.name = 'Please type your Username.';
+        }else if(!this.email){
+          this.validation.invalid.email = 'Please type your Email.';
+        }else if(!this.password){
+          this.validation.invalid.password = 'Please type your Password.';
+        }else if(response.data == "Email: "+ this.email +" already exist"){
+          this.validation.invalid.email = response.data;
+        }else{
+          self.$router.push('/admin/login');
+        }      
       });
     },
   },
