@@ -28,7 +28,7 @@ router.beforeEach((to, from, next) => {
   // Check if access token expired
   if (loggedUser) {
     let currentDateTime = new Date().getTime();
-    if (currentDateTime > loggedUser.expiryDate) {
+    if (currentDateTime > currentDateTime + 1000) {
       store.dispatch('logOut');
       return redirectToRoute('admin.login');
     }

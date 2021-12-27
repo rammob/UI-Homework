@@ -1,0 +1,140 @@
+<adminLayout>
+    <div class="col-12">
+        <div class="card mb-4 p-4">
+          <div class="card-body px-0 pt-0 pb-2">
+            <section id="app" class="section">
+                <h1 class="title is-1">Create Indication Plus</h1>
+                <div class="columns">
+                    <div class="row">
+                        <div class="col-md-12 column">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-6 field">
+                                        <label class="label">Street no</label>
+                                        <div class="control">
+                                            <input class="input" type="text"  v-model="form.street_no" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 field">
+                                        <label class="label">House no</label>
+                                        <div class="control">
+                                            <input class="input" type="text" v-model="form.house_no" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 field">
+                                        <label class="label">Address</label>
+                                        <div class="control">
+                                            <input class="input" type="text" v-model="form.address" />
+                                        </div>
+                                    </div>
+                    
+                                    <div class="col-md-6 field">
+                                        <label class="label">Record Type</label>
+                                        <div class="control">
+                                            <div class="select">
+                                                <select v-model="form.record_type">
+                                                    <option v-for="record_type in ['-','Building', 'Land']" :value="form.record_type">
+                                                        {{record_type}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 field">
+                                        <label class="label">Property Type</label>
+                                        <div class="control">
+                                            <div class="select">
+                                                <select v-model="form.type">
+                                                    <option v-for="type in ['-','Building', 'Land']" :value="type">
+                                                        {{type}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 field">
+                                        <label class="label">Land width</label>
+                                        <div class="control">
+                                            <input class="input" type="number" v-model="land_width" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 field">
+                                        <label class="label">Land length</label>
+                                        <div class="control">
+                                            <input class="input" type="number" v-model="form.land_length" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 field">
+                                        <label class="label">Land area</label>
+                                        <div class="control">
+                                            <input class="input" type="number" v-model="form.land_area" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 field">
+                                        <label class="label">Instructor date</label>
+                                        <div class="control">
+                                            <input class="input" type="date" v-model="form.instructor_date" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 field">
+                                        <label class="label">Due date</label>
+                                        <div class="control">
+                                            <input class="input" type="date" v-model="form.due_date" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 field">
+                                        <label class="label">Indication date</label>
+                                        <div class="control">
+                                            <input class="input" type="date" v-model="form.indication_date" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 field">
+                                        <label class="label">Current Use</label>
+                                        <div class="control">
+                                            <div class="select">
+                                                <select v-model="form.current_use">
+                                                    <option v-for="type in ['-','Building', 'Land']" :value="type">
+                                                        {{type}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 field">
+                                        <label class="label">Status</label>
+                                        <div class="control">
+                                            <div class="select">
+                                                <select v-model="form.case_status">
+                                                    <option v-for="type in ['-','New', 'In Progress', 'Pending', 'Competed']" :value="type">
+                                                        {{type}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 field">
+                                        <label class="label">Description</label>
+                                        <div class="control">
+                                            <textarea rows="5" cols="50" v-model="form.description" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input class="button is-primary margin-bottom pl-0" type="submit" @click.prevent="submit" />
+                                    </div>
+                                    <!-- <div class="col-md-6 column">
+                                        <h5>
+                                            JSON
+                                        </h5>
+                                        <pre><code>{{form}}</code></pre>
+                                    </div> -->
+                                </div>
+                            </form>
+                        </div>
+                        
+                    </div>
+                </div>
+            </section>
+          </div>
+        </div>
+      </div>
+</adminLayout>

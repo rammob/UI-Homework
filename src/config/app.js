@@ -1,4 +1,4 @@
 export const appConfig = {
-  APP_NAME: process.env.VUE_APP_NAME,
-  BACKEND_URL: process.env.VUE_APP_BACKEND_URL,
+  APP_NAME: 'http://127.0.0.1:8000',
+  BACKEND_URL: 'http://127.0.0.1:8000',
 };

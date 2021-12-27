@@ -9,7 +9,6 @@ const getLoggedUser = (state) => {
   }
   return user;
 };
-
 export default {
   getDisplayLoader,
   getLoggedUser,

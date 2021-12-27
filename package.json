@@ -13,12 +13,14 @@
     "@dafcoe/vue-notification": "^0.1.6",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@popperjs/core": "^2.9.2",
-    "axios": "^0.21.1",
+    "axios": "^0.21.4",
     "bootstrap": "^5.0.2",
     "core-js": "^3.15.2",
+    "moment": "^2.29.1",
     "prettier": "^2.3.2",
     "vue": "^3.1.5",
     "vue-router": "^4.0.10",
+    "vue-simple-alert": "^1.1.1",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
@@ -27,7 +29,7 @@
     "@vue/cli-service": "^4.5.13",
     "@vue/compiler-sfc": "^3.1.5",
     "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
+    "eslint": "^5.16.0",
     "eslint-plugin-vue": "^7.14.0"
   },
   "eslintConfig": {
@@ -42,7 +44,9 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "no-console": "off"
+    }
   },
   "browserslist": [
     "> 1%",

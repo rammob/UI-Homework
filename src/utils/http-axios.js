@@ -5,20 +5,19 @@ import { appConfig } from '@/config/app';
 import { showNotification } from '@/utils/show-notification';
 
 // Create
+
 const service = axios.create({
   baseURL: appConfig.BACKEND_URL,
 });
 
 // Token
 if (store.getters.getLoggedUser) {
-  service.defaults.headers.common['Authorization'] = 'Bearer ' + store.getters.getLoggedUser.access_token;
+  service.defaults.headers.common['Authorization'] = 'Bearer ' + store.getters.getLoggedUser.data.access_token;
 }
-
 // Request Interceptor
 service.interceptors.request.use(
   (config) => {
     store.dispatch('displayLoader', true);
-
     return config;
   },
   (error) => {

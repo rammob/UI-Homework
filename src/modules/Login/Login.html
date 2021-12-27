@@ -7,20 +7,37 @@
           <p class="text-sm font-weight-bold mb-2 text-secondary text-border d-inline z-index-2 bg-white px-3 mt-2">Enter your email and password to sign in.</p>
         </div>
         <div class="card-body">
-          <form role="form text-left">
-            <div class="mb-3">
-              <input type="email" class="form-control" placeholder="Email" aria-label="Email" v-model="email" />
+          <form v-on:submit.prevent="login" autocomplete="off" id="Form">
+            <div class="form-row">
+              <div class="col-md-12 mb-3">
+                <label for="username">Email</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="username">@</span>
+                  </div>
+                  <input type="email" id="username" placeholder="Email" class="form-control" :class="{ 'is-valid': validation.valid.username, 'is-invalid': validation.invalid.username }" v-on:focus="clearValidation('username')" v-model="username" />
+                  <div class="valid-feedback" v-if="validation.valid.username">{{ validation.valid.username }}</div>
+    
+                  <div class="invalid-feedback" v-if="validation.invalid.username">{{ validation.invalid.username }}</div>
+                </div>
+              </div>
+              <div class="col-md-12 mb-3">
+                <label for="Password">Password</label>
+                <input id="password"  type="password" placeholder="Password" class="form-control" autocomplete="false" 
+                      v-bind:class="{ 'is-valid': validation.valid.password, 'is-invalid': validation.invalid.password }" 
+                      v-on:focus="clearValidation('password')" v-model="password"
+                />
+                <div class="valid-feedback" v-if="validation.valid.password">{{ validation.valid.password }}</div>
+                <div class="invalid-feedback" v-if="validation.invalid.password">{{ validation.invalid.password }}</div>
+              </div>
+              <div class="col-sm-12">
+                <button class="btn btn-primary" type="submit">Sign in</button>
+              </div>
             </div>
-            <div class="mb-3">
-              <input type="password" class="form-control" placeholder="Password" aria-label="Password" v-model="password" />
-            </div>
-            <div class="text-center">
-              <button type="button" class="btn bg-gradient-dark w-100 my-4 mb-2" @click="login">Sign in</button>
-            </div>
-            <p class="text-sm mt-3 mb-0 text-center">Don't have an account? <a href="#" class="text-dark font-weight-bolder">Sign up</a></p>
           </form>
+          <p class="text-sm mt-3 mb-0 text-center">Don't have an account? <a href="http://localhost:8080/admin/register" class="text-dark font-weight-bolder">Sign up</a></p>
         </div>
       </div>
     </div>
-  </div>
+  </div> 
 </guestLayout>
