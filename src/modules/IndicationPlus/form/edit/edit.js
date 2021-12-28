@@ -51,7 +51,9 @@ export default {
                 params : { id : id },
                 data: data ,
               }).then(async (response) => {
-                this.indication = response.data;
+                if(response.data){
+                    this.$router.back();
+                } 
               });
         },
     },

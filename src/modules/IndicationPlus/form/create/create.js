@@ -25,12 +25,23 @@ export default {
                     updated_by: 2,
                     instructor_date: new Date().toLocaleDateString(),
                     due_date: new Date().toLocaleDateString(),
-                    indication_date: new Date().toLocaleDateString()
+                    indication_date: new Date().toLocaleDateString(),
+                    validation: {
+                        invalid: {
+                        },
+                        valid: {
+                        },
+                    }
                     
                 }
             };
     },
     methods: {
+        clearValidation: function(field) {
+            this.validation.valid[field] = '';
+            this.validation.invalid[field] = '';
+            this.$forceUpdate();
+        },
         submit() {
             const self = this.form;
             const data = {
@@ -59,9 +70,16 @@ export default {
                 method: 'POST',
                 data: data,
               }).then(async (response) => {
-                if(response.data){
-                    this.$router.back();
-                }    
+                if(response.data == 'Error: Attribute SubmitCaseModel.land_width is required'){
+                    this.form.validation.invalid.land_width = 'Invalid Land Width';
+
+                // }else if(response.data == 'Error: Attribute SubmitCaseModel.land_length is required'){
+
+                // }else if(response.data == 'Error: Attribute SubmitCaseModel.land_area is required'){
+
+                // }else{
+
+                }
               });
         },
     }  

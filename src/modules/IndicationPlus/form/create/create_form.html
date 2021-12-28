@@ -7,13 +7,20 @@
                 <div class="columns">
                     <div class="row">
                         <div class="col-md-12 column">
-                            <form class="p-2">
+                            <form class="p-2" v-on:submit.prevent="submit">
                                 <div class="row">
                                     <div class="col-md-6 field">
                                         <label class="label">Street no</label>
                                         <div class="control">
                                             <input class="input" type="text" v-model="form.street_no" />
                                         </div>
+                                        <!-- <label for="street_no">Street no</label>
+                                        <input id="street_no"  type="text" placeholder="Street no" class="form-control" autocomplete="false" 
+                                            v-bind:class="{ 'is-valid': validation.valid.street_no, 'is-invalid': validation.invalid.street_no }" 
+                                            v-on:focus="clearValidation('street_no')" v-model="street_no"
+                                        />
+                                        <div class="valid-feedback" v-if="validation.valid.street_no">{{ validation.valid.street_no }}</div>
+                                        <div class="invalid-feedback" v-if="validation.invalid.street_no">{{ validation.invalid.street_no }}</div> -->
                                     </div>
                                     <div class="col-md-6 field">
                                         <label class="label">House no</label>
@@ -52,17 +59,23 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 field">
-                                        <label class="label">Land width</label>
-                                        <div class="control">
-                                            <input class="input" type="number" v-model="form.land_width" />
-                                        </div>
+                                    <div class="col-md-6 field">                                    
+                                        <label for="land_width">Land width</label>
+                                        <input id="land_width"  type="number" placeholder="Land width" class="form-control" 
+                                            v-bind:class="{ 'is-valid': form.validation.valid.land_width, 'is-invalid': form.validation.invalid.land_width }" 
+                                            v-on:focus="clearValidation('land_width')" v-model="form.land_width"
+                                        />
+                                        <div class="valid-feedback" v-if="form.validation.valid.land_width">{{ form.validation.valid.land_width }}</div>
+                                        <div class="invalid-feedback" v-if="form.validation.invalid.land_width">{{ form.validation.invalid.land_width }}</div>
                                     </div>
                                     <div class="col-md-6 field">
-                                        <label class="label">Land length</label>
-                                        <div class="control">
-                                            <input class="input" type="number" v-model="form.land_length" />
-                                        </div>
+                                        <label for="land_length">Land length</label>
+                                        <input id="land_length"  type="number" placeholder="Land length" class="form-control" 
+                                            v-bind:class="{ 'is-valid': form.validation.valid.land_length, 'is-invalid': form.validation.invalid.land_length }" 
+                                            v-on:focus="clearValidation('land_length')" v-model="form.land_length"
+                                        />
+                                        <div class="valid-feedback" v-if="form.validation.valid.land_length">{{ form.validation.valid.land_length }}</div>
+                                        <div class="invalid-feedback" v-if="form.validation.invalid.land_length">{{ form.validation.invalid.land_length }}</div>
                                     </div>
                                     <div class="col-md-12 field">
                                         <label class="label">Land area</label>
@@ -119,7 +132,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <button class="btn btn-primary" type="submit"  @click.prevent="submit">Submit</button>
+                                        <button class="btn btn-primary margin-bottom pl-0" type="submit"> Submit</button>
                                     </div>
                                     <!-- <div class="col-md-6 column">
                                         <h5>
