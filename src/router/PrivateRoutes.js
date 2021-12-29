@@ -4,6 +4,8 @@ const users = () => import('@/modules/Users');
 const indication_plus = () => import('@/modules/IndicationPlus');
 const create_form = () => import('@/modules/IndicationPlus/form/create');
 const edit_form = () => import('@/modules/IndicationPlus/form/edit');
+const show_form = () => import('@/modules/IndicationPlus/form/show');
+
 // Export
 export default [
   // Dashboard
@@ -53,6 +55,15 @@ export default [
     meta: {
       // auth: true,
       breadCrumb: [{ name: 'edit_form', link: 'admin.indication-plus.edit' }],
+    },
+  },
+  {
+    path: '/admin/indication-plus/show',
+    component: show_form,
+    name: 'admin.indication-plus.show',
+    meta: {
+      // auth: true,
+      breadCrumb: [{ name: 'show_form', link: 'admin.indication-plus.show' }],
     },
   },
 ];

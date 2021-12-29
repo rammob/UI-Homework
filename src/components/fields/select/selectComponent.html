@@ -1,0 +1,8 @@
+<div :class="class">
+    <label class="label">{{label}} </label>
+    <select v-model="value" class="form-control">
+        <option v-for="value in options" value="value">
+            {{value}}
+        </option>
+    </select>
+</div>

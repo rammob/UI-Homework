@@ -1,0 +1,41 @@
+<adminLayout>
+    <div class="col-12">
+        <h1 class="title is-1">Show Indication Plus</h1>
+        <div class="card mb-4 p-4">
+          <div class="card-body px-0 pt-0 pb-2">
+            <section id="app" class="section">
+                <div class="columns">
+                    <div class="row">
+                        <div class="col-md-12 column">
+                            <nav class="navbar navbar-primary px-0">
+                                <div class="container bg-primary rounded py-2 text-white">
+                                    <h4 class="mb-0 text-white">Indication Information</h4>
+                                </div>
+                            </nav>   
+                        </div>
+                        <div class="col-md-6 field column pl-4">
+                            <label> Case ID: {{form.id}}</label>
+                        </div>
+                        <div class="col-md-6 field column">
+                            <label> Status: {{form.case_status}}</label>
+                        </div>  
+                        <div class="col-md-12 column">
+                            <nav class="navbar navbar-primary px-0">
+                                <div class="container bg-primary rounded py-2 text-white">
+                                    <h4 class="mb-0 text-white">Property Information</h4>
+                                </div>
+                            </nav>   
+                        </div>
+                        <div class="col-md-6 field column  pl-4">
+                            <label> Record Type: {{form.record_type}}</label>
+                        </div>
+                        <div class="col-md-6 field column">
+                            <label> Property Type: {{form.type}}</label>
+                        </div>  
+                    </div>
+                </div>
+            </section>
+          </div>
+        </div>
+      </div>
+</adminLayout>

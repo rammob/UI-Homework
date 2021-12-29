@@ -1,17 +1,33 @@
 import adminLayout from '@/layouts/Admin';
 import httpAxios from '@/utils/http-axios';
+import inputText from '@/components/fields/input';
 import moment from 'moment';
 export default {
     name: 'edit_form',
     components: {
         adminLayout,
+        inputText
     },
     data() {
         return {
-             form : [],
+             form : {},
+             recordType: ['-', 'Land', 'Building','Land and Building' ],
+             propertyTypes : ['-', " Vacant Land","Agricultural Land"],
+             currentUses : ['-',"Mixed Use Building","Guest Houses","Entertainment Building","Parking Facilities"],
+             caseStatus : ['-', 'New', 'In Progress', 'Pending', 'Competed'],
+             validation: {
+                invalid: {},
+                valid: {}
+            }
+
         };
     },
     methods: {
+        clearValidation: function() {
+            // this.validation.valid[field] = '';
+            // this.validation.invalid[field] = '';
+            // this.$forceUpdate();
+        },
         getData(){
             const id = this.$route.query.id;
             httpAxios({
@@ -19,10 +35,20 @@ export default {
                 method: 'GET',
             }).then(async (response) => {
                 this.form = response.data;
+                console.log(this.form);
             });
         },
         submit() {
             const self = this.form;
+            if(!self.land_width){
+                this.validation.invalid.land_width = 'Require Field Land Width';
+            }
+            if(!self.land_length){
+                this.validation.invalid.land_length = 'Require Field Land Length';
+            }
+            if(!self.land_area){
+                this.validation.invalid.land_area = 'Require Field Land Area';
+            }
             const id = this.$route.query.id;
             const data = {
                 "owner_id": 2,
@@ -32,6 +58,11 @@ export default {
                 "land_width": self.land_width,
                 "land_length": self.land_length,
                 "land_area": self.land_area,
+                "building_width": self.building_width,
+                "building_length": self.building_length,
+                "building_area": self.building_area,
+                "building_floor": self.building_floor,
+                "building_story": self.building_story,
                 "description": self.description,
                 "record_type": self.record_type,
                 "type": self.type,

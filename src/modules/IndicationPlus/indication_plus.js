@@ -33,6 +33,7 @@ export default {
       }).then(async (response) => {
           if(response.data == 'Deleted successfully.'){
             alert("Deleted successfully.");
+            this.$router.go()
           }
       });
     }

@@ -1,0 +1,14 @@
+<div :class="class">
+    <label for="street_no">{{label}}</label>
+    <input id="street_no"  :type="type" :placeholder="placeholder" class="form-control" autocomplete="false"
+    v-on:focus="clearValidation('street_no')"
+    />
+    <!-- <div class="valid-feedback" v-if="form.validation.valid.street_no">{{ form.validation.valid.street_no }}</div> -->
+</div>
+<!-- <label for="street_no">Street no</label>
+    <input id="street_no"  type="text" placeholder="Street no" class="form-control" autocomplete="false" 
+        v-bind:class="{ 'is-valid': form.validation.valid.street_no, 'is-invalid': form.validation.invalid.street_no }" 
+        v-on:focus="clearValidation('street_no')" v-model="form.street_no"
+    />
+    <div class="valid-feedback" v-if="form.validation.valid.street_no">{{ form.validation.valid.street_no }}</div>
+    <div class="invalid-feedback" v-if="form.validation.invalid.street_no">{{ form.validation.invalid.street_no }}</div> -->
