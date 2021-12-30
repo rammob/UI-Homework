@@ -25,9 +25,9 @@ export default {
     },
     methods: {
         clearValidation: function() {
-            this.validation.valid[field] = '';
-            this.validation.invalid[field] = '';
-            this.$forceUpdate();
+            // this.validation.valid[field] = '';
+            // this.validation.invalid[field] = '';
+            // this.$forceUpdate();
         },
         submit() {
             const self = this.form;
