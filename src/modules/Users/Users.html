@@ -5,7 +5,7 @@
         <h1>User</h1>
           <div class="row">
             <div class="col-md-9">
-              <a href="http://localhost:8080/admin/indication-plus/create" type="button" class="btn btn-primary btn-md mb-4">+ Add</a>
+              <a href="http://localhost:8080/admin/user/create" type="button" class="btn btn-primary btn-md mb-4">+ Add</a>
             </div>
             <div class="col-md-3">
               <label class="">Search</label>
@@ -25,7 +25,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="prop in indication_plus">
+              <tr v-for="prop in sortedArray()">
                 <td>
                   <div class="d-flex px-2 py-1" >
                     <div>
@@ -46,19 +46,19 @@
                   <span class="text-secondary text-md font-weight-bold">{{prop.created_at}}</span>
                 </td>
                 <td class="align-middle text-nowrap">
-                  <a :href="'http://localhost:8080/admin/users/show/'+prop.id" 
+                  <a :href="'http://localhost:8080/admin/user/show?id='+prop.id" 
                     class="btn btn-primary btn-sm text-white font-weight-bold text-md pl-1" 
                     data-toggle="tooltip" data-original-title="Show Indication">
                     <i class="fa fa-eye"></i>
                   </a>
-                  <a :href="'http://localhost:8080/admin/users/edit?id='+prop.id" 
+                  <a :href="'http://localhost:8080/admin/user/edit?id='+prop.id" 
                       class="btn btn-success btn-sm text-white font-weight-bold text-md pl-1" 
                       data-toggle="tooltip" 
                       data-original-title="Edit Indication">
                       <i class="fa fa-edit"></i>
                     </a>
                   <button @click.prevent="deleteItem(prop.id)" 
-                          :href="'http://localhost:8080/admin/users/delete/'+prop.id" 
+                          :href="'http://localhost:8080/admin/user/delete/'+prop.id" 
                           class="btn btn-danger btn-sm text-white font-weight-bold text-md" 
                           data-toggle="tooltip" 
                           data-original-title="Delete Indication">

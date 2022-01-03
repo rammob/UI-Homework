@@ -1,10 +1,4 @@
 <adminLayout>
-  <!-- <div class="col-md-12 column">
-      <h5>
-          JSON
-      </h5>
-      <pre><code>{{indication_plus }}</code></pre>
-  </div> -->
   <div class="col-12">
     <div class="card mb-4 p-4">
       <div class="card-body px-0 pt-0 pb-2">
@@ -13,66 +7,71 @@
           <div class="col-md-9">
             <a href="http://localhost:8080/admin/indication-plus/create" type="button" class="btn btn-primary btn-md mb-4">+ Add</a>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3 mb-3">
             <label class="">Search</label>
             <input type="text" class="form-control"/>
           </div>
         </div>
         <div class="table-responsive p-0">
-          <table class="table align-items-center mb-0">
+          <table class="table align-items-center mb-0 table-bordered table-striped">
             <thead>
               <tr>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 px-2 py-1">ID</th>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
-                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date/Time Created</th>
-                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Due Date/Time</th>
-                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Property Type</th>
-                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Property Owner</th>
-                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Created By</th>
-                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"> Action </th>
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" v-for="col in columns"> 
+                  <div class="d-fex justify-content-between">
+                    <div>{{col}} <i class="fa fa-arrow-up"></i></div>
+                    <div>
+                      <!-- <template v-for="sort.column === col.name && sort.by === 'asc'">
+                        <i class="fa fa-arrow-up" @click="sort = {column: col.name, by: 'desc'}"></i>   
+                      </template>
+                      <template v-for="sort.column === col.name && sort.by === 'desc'">
+                        <i class="fa fa-arrow-up" @click="sort = {column: col.name, by: 'asc'}"></i>   
+                      </template> -->
+                    </div>
+                  </div>
+                </th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="prop in indication_plus">
+              <tr v-for="(entry, index) in sortedArray()" :key="index">
                 <td>
                   <div class="d-flex px-2 py-1" >
                     <div>
-                      <span>{{prop.id}}</span>
+                      <span>{{entry.id}}</span>
                     </div>
                   </div>
                 </td>
                 <td class="align-middle text-center">
-                  <span class="text-secondary text-md font-weight-bold">{{prop.case_status}}</span>
+                  <span class="text-secondary text-md font-weight-bold">{{entry.case_status}}</span>
                 </td>
                 <td class="align-middle text-center">
-                  <span class="text-secondary text-md font-weight-bold">{{prop.created_at}}</span>
+                  <span class="text-secondary text-md font-weight-bold">{{entry.created_at}}</span>
                 </td>
                 <td class="align-middle text-center">
-                  <span class="text-secondary text-md font-weight-bold">{{prop.due_date}}</span>
+                  <span class="text-secondary text-md font-weight-bold">{{entry.due_date}}</span>
                 </td>
                 <td class="align-middle text-center">
-                  <span class="text-secondary text-md font-weight-bold">{{prop.type}}</span>
+                  <span class="text-secondary text-md font-weight-bold">{{entry.type}}</span>
                 </td>
+                <!-- <td class="align-middle text-center">
+                  <span class="text-secondary text-md font-weight-bold">{{entry.owner_id}}</span>
+                </td> -->
                 <td class="align-middle text-center">
-                  <span class="text-secondary text-md font-weight-bold">{{prop.owner_id}}</span>
-                </td>
-                <td class="align-middle text-center">
-                  <span class="text-secondary text-md font-weight-bold">{{prop.created_by}}</span>
+                  <span class="text-secondary text-md font-weight-bold">{{entry.created_by}}</span>
                 </td>
                 <td class="align-middle text-nowrap">
-                  <a :href="'http://localhost:8080/admin/indication-plus/show?id='+prop.id" 
+                  <a :href="'http://localhost:8080/admin/indication-plus/show?id='+entry.id" 
                     class="btn btn-primary btn-sm text-white font-weight-bold text-md pl-1" 
                     data-toggle="tooltip" data-original-title="Show Indication">
                     <i class="fa fa-eye"></i>
                   </a>
-                  <a :href="'http://localhost:8080/admin/indication-plus/edit?id='+prop.id" 
+                  <a :href="'http://localhost:8080/admin/indication-plus/edit?id='+entry.id" 
                       class="btn btn-success btn-sm text-white font-weight-bold text-md pl-1" 
                       data-toggle="tooltip" 
                       data-original-title="Edit Indication">
                       <i class="fa fa-edit"></i>
                     </a>
-                  <button @click.prevent="deleteItem(prop.id)" 
-                          :href="'http://localhost:8080/admin/indication-plus/delete/'+prop.id" 
+                  <button @click.prevent="deleteItem(entry.id)" 
+                          :href="'http://localhost:8080/admin/indication-plus/delete/'+entry.id" 
                           class="btn btn-danger btn-sm text-white font-weight-bold text-md" 
                           data-toggle="tooltip" 
                           data-original-title="Delete Indication">

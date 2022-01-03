@@ -39,52 +39,40 @@ export default {
         },
         submit() {
             const self = this.form;
-            if(!self.land_width){
-                this.validation.invalid.land_width = 'Require Field Land Width';
+            if(!self.name){
+                this.validation.invalid.name = 'Require Field Land Width';
             }
-            if(!self.land_length){
-                this.validation.invalid.land_length = 'Require Field Land Length';
+            if(!self.email){
+                this.validation.invalid.email = 'Require Field Land Length';
             }
-            if(!self.land_area){
-                this.validation.invalid.land_area = 'Require Field Land Area';
+            if(!self.password){
+                this.validation.invalid.password = 'Require Field Land Area';
             }
             const id = this.$route.query.id;
             const data = {
-                "owner_id": 2,
-                "street_no": self.street_no,
-                "house_no": self.house_no,
-                "address": self.address,
-                "land_width": self.land_width,
-                "land_length": self.land_length,
-                "land_area": self.land_area,
-                "building_width": self.building_width,
-                "building_length": self.building_length,
-                "building_area": self.building_area,
-                "building_floor": self.building_floor,
-                "building_story": self.building_story,
-                "description": self.description,
-                "record_type": self.record_type,
-                "type": self.type,
-                "created_by": 2,
-                "updated_by":  2,
-                "created_at": moment(String(new Date().toLocaleDateString())).format(),
-                "updated_at": moment(String(new Date().toLocaleDateString())).format(),
-                "current_use": self.current_use,
-                "case_status": self.case_status,
-                "instructor_date": moment(String(self.instructor_date)).format(),
-                "due_date": moment(String(self.due_date)).format(),
-                "indication_date": moment(String(self.indication_date)).format()
+                "name": self.name,
+                "email": self.email,
+                "password": self.password,
+                "phone": "+85512345221",
             };
             console.log(data)
             httpAxios({
-                url: '/submit_case/update_submit_case',
+                url: '/user/update_user',
                 method: 'PUT',
                 params : { id : id },
                 data: data ,
               }).then(async (response) => {
-                if(response.data){
+                if(!this.form.name){
+                    this.validation.invalid.name = 'Please type your Username.';
+                  }else if(!this.form.email){
+                    this.validation.invalid.email = 'Please type your Email.';
+                  }else if(!this.form.password){
+                    this.validation.invalid.password = 'Please type your Password.';
+                  }else if(response.data == "Email: "+ this.email +" already exist"){
+                    this.validation.invalid.email = response.data;
+                  }else{
                     this.$router.back();
-                } 
+                  } 
               });
         },
     },

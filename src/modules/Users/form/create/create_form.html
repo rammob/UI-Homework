@@ -1,0 +1,60 @@
+<adminLayout>
+    <div class="col-12">
+        <h1 class="title is-1">Create New User</h1>
+        <div class="card mb-4 p-4">
+          <div class="card-body px-0 pt-0 pb-2">
+            <section id="app" class="section">
+                <div class="columns">
+                    <div class="row">
+                        <div class="col-md-12 column">
+                            <form class="p-2" v-on:submit.prevent="submit">
+                                <div class="row">                                     
+                                    <div class="col-md-6 field">
+                                        <label for="name">Name</label>
+                                        <input id="name"  type="text" placeholder="" class="form-control" autocomplete="false" 
+                                            v-bind:class="{ 'is-valid': validation.valid.name, 'is-invalid': validation.invalid.name }" 
+                                            v-on:focus="clearValidation('name')" v-model="form.name"
+                                        />
+                                        <div class="valid-feedback" v-if="validation.valid.name">{{ validation.valid.name }}</div>
+                                        <div class="invalid-feedback" v-if="validation.invalid.name">{{ validation.invalid.name }}</div>
+                                    </div>
+                                    <div class="col-md-6 field">
+                                        <label for="phone">Phone</label>
+                                        <input id="phone"  type="text" placeholder="" class="form-control" autocomplete="false" 
+                                            v-bind:class="{ 'is-valid': validation.valid.phone, 'is-invalid': validation.invalid.phone }" 
+                                            v-on:focus="clearValidation('phone')" v-model="form.phone"
+                                        />
+                                        <div class="valid-feedback" v-if="validation.valid.phone">{{ validation.valid.phone }}</div>
+                                        <div class="invalid-feedback" v-if="validation.invalid.phone">{{ validation.invalid.phone }}</div>
+                                    </div>
+                                    <div class="col-md-6 field">
+                                        <label for="email">Email</label>
+                                        <input id="email"  type="email" placeholder="" class="form-control" autocomplete="false" 
+                                            v-bind:class="{ 'is-valid': validation.valid.email, 'is-invalid': validation.invalid.email }" 
+                                            v-on:focus="clearValidation('email')" v-model="form.email"
+                                        />
+                                        <div class="valid-feedback" v-if="validation.valid.email">{{ validation.valid.email }}</div>
+                                        <div class="invalid-feedback" v-if="validation.invalid.email">{{ validation.invalid.email }}</div>
+                                    </div>
+                                    <div class="col-md-6 field">
+                                        <label for="password">Password</label>
+                                        <input id="password"  type="password" placeholder="" class="form-control" autocomplete="false" 
+                                            v-bind:class="{ 'is-valid': validation.valid.password, 'is-invalid': validation.invalid.password }" 
+                                            v-on:focus="clearValidation('password')" v-model="form.password"
+                                        />
+                                        <div class="valid-feedback" v-if="validation.valid.password">{{ validation.valid.password }}</div>
+                                        <div class="invalid-feedback" v-if="validation.invalid.password">{{ validation.invalid.password }}</div>
+                                    </div>
+                                    <div class="col-md-12 field pt-4">
+                                        <button class="btn btn-primary margin-bottom pl-0" type="submit"> Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+          </div>
+        </div>
+      </div>
+</adminLayout>

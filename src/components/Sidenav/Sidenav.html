@@ -3,7 +3,14 @@
     <div class="sidebar-header">
       <div class="d-flex justify-content-between">
         <div class="logo">
-          <a href="index.html"><img src="https://zuramai.github.io/mazer/demo/assets/images/logo/logo.png" alt="Logo" srcset="" /></a>
+          <div class="dropdown">
+              <a href="#" class="dropdown-toggle bg-0" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://zuramai.github.io/mazer/demo/assets/images/logo/logo.png" alt="Logo" srcset="" />
+              </a>
+            <div class="dropdown-menu bordered">
+              <a class="dropdown-item" href="#" @click="logout">Logout</a>
+            </div>
+          </div>
         </div>
         <div class="toggler">
           <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -14,21 +21,21 @@
       <ul class="menu">
         <li class="sidebar-title">Menu</li>
 
-        <li class="sidebar-item active">
+        <li id="dashboard" class="sidebar-item">
           <a href="http://localhost:8080/admin/Dashboard" class="sidebar-link">
             <i class="fas fa-tachometer-alt"></i>
             <span>Dashboard</span>
           </a>
         </li>
 
-        <li class="sidebar-item">
+        <li id="case" class="sidebar-item">
           <a href="http://localhost:8080/admin/indication-plus" class="sidebar-link">
             <i class="fas fa-home"></i>
             <span>Indication Plus</span>
           </a>
         </li>
 
-        <li class="sidebar-item">
+        <li id="user" class="sidebar-item">
           <a href="http://localhost:8080/admin/users" class="sidebar-link">
             <i class="fas fa-user-friends"></i>
             <span>User</span>

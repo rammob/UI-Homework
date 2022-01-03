@@ -1,4 +1,4 @@
-import guestLayout from '@/layouts/Guest';
+  import guestLayout from '@/layouts/Guest';
 import httpAxios from '@/utils/http-axios';
 
 export default {

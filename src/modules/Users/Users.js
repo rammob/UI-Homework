@@ -23,8 +23,19 @@ export default {
           });
           this.indication_plus = response.data;
       });
-    }
+    },
+    sortedArray: function() {
+      function compare(a, b) {
+        if (a.id > b.id)
+          return -1;
+        if (a.id < b.id)
+          return 1;
+        return 0;
+      }
+      return this.indication_plus.sort(compare);
+    },
   },
+ 
   mounted() {
     this.refreshData();
   }

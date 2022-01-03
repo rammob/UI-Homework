@@ -19,7 +19,7 @@
                                         <select v-model="form.record_type" class="form-control"
                                             v-bind:class="{ 'is-valid': validation.valid.record_type, 'is-invalid': validation.invalid.record_type }" 
                                             v-on:focus="clearValidation('record_type')">
-                                            <option v-for="record_type in recordType" :value="record_type">
+                                            <option v-for="record_type in recordTypes">
                                                 {{record_type}}
                                             </option>
                                         </select>
@@ -31,7 +31,7 @@
                                         <select v-model="form.type" class="form-control"
                                             v-bind:class="{ 'is-valid': validation.valid.type, 'is-invalid': validation.invalid.type }" 
                                             v-on:focus="clearValidation('type')">
-                                            <option v-for="type in propertyTypes" :value="type">
+                                            <option v-for="type in propertyTypes">
                                                 {{type}}
                                             </option>
                                         </select>
@@ -41,7 +41,7 @@
                                     <div class="col-md-6 field">
                                         <label class="label" v-bind:class="{ 'text-danger': validation.valid.current_use, 'text-danger': validation.invalid.current_use }">Current Use</label>
                                         <select v-model="form.current_use" class="form-control">
-                                            <option v-for="current_use in currentUses" :value="current_use">
+                                            <option v-for="current_use in currentUses">
                                                 {{current_use}}
                                             </option>
                                         </select>

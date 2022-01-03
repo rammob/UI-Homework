@@ -2,6 +2,7 @@ import adminLayout from '@/layouts/Admin';
 import httpAxios from '@/utils/http-axios';
 import moment from 'moment';
 
+
 export default {
   name: 'indication_plus',
   components: {
@@ -9,6 +10,8 @@ export default {
   },
   data() {
     return {
+        sort: { column: 'id', by: 'asc'},
+        columns: ['ID','Status','Date/Time Created','Due Date/Time','Property Type','Created By','Action'],
         indication_plus : [],
       }
   },
@@ -36,9 +39,12 @@ export default {
             this.$router.go()
           }
       });
-    }
+    },
+    sortedArray: function() {
+      return this.indication_plus.sort((a,b)=> b.id - a.id);
+    },
   },
   mounted() {
     this.refreshData();
-  }
+  },
 };
