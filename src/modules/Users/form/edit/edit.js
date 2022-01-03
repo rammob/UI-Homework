@@ -1,7 +1,6 @@
 import adminLayout from '@/layouts/Admin';
 import httpAxios from '@/utils/http-axios';
 import inputText from '@/components/fields/input';
-import moment from 'moment';
 export default {
     name: 'edit_form',
     components: {
