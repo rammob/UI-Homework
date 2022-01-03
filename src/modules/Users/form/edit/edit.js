@@ -34,13 +34,10 @@ export default {
         submit() {
             const self = this.form;
             if(!self.name){
-                this.validation.invalid.name = 'Require Field Land Width';
+                this.validation.invalid.name = 'Require Field Name';
             }
             if(!self.email){
-                this.validation.invalid.email = 'Require Field Land Length';
-            }
-            if(!self.password){
-                this.validation.invalid.password = 'Require Field Land Area';
+                this.validation.invalid.email = 'Require Field Land Email';
             }
             const id = this.$route.query.id;
             const data = {
