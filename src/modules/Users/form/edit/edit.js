@@ -1,11 +1,10 @@
 import adminLayout from '@/layouts/Admin';
 import httpAxios from '@/utils/http-axios';
-import inputText from '@/components/fields/input';
+
 export default {
     name: 'edit_form',
     components: {
-        adminLayout,
-        inputText
+        adminLayout
     },
     data() {
         return {
