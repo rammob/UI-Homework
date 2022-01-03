@@ -10,10 +10,6 @@ export default {
     data() {
         return {
              form : {},
-             recordTypes: ['-', 'Land', 'Building','Land and Building' ],
-             propertyTypes : ['-', " Vacant Land","Agricultural Land"],
-             currentUses : ['-',"Mixed Use Building","Guest Houses","Entertainment Building","Parking Facilities"],
-             caseStatus : ['-', 'New', 'In Progress', 'Pending', 'Competed'],
              validation: {
                 invalid: {},
                 valid: {}
