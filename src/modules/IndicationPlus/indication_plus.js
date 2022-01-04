@@ -10,8 +10,12 @@ export default {
   },
   data() {
     return {
-        sort: { column: 'id', by: 'asc'},
-        columns: ['ID','Status','Date/Time Created','Due Date/Time','Property Type','Created By','Action'],
+        sort: { column: 'id', by: 'asc' },
+        columns: [{name:'id', text:'ID'},
+                  {name:'case_status', text:'Status'},
+                  {name:'created_at', text:'Date/Time Created'},
+                  {name:"type", text:'Property Type'},
+                  {name:'due_date', text:'Due Date/Time'}],
         indication_plus : [],
       }
   },
@@ -41,7 +45,32 @@ export default {
       });
     },
     sortedArray: function() {
-      return this.indication_plus.sort((a,b)=> b.id - a.id);
+      const sort = this.sort;
+
+      function compareAsc(a, b) {
+        console.log(a[sort.column])
+        if (a[sort.column] < b[sort.column])
+          return -1;
+        if (a[sort.column] > b[sort.column])
+          return 1;
+        return 0;
+      }
+      function compareDesc(a, b) {
+        if (a[sort.column] > b[sort.column])
+          return -1;
+        if (a[sort.column] < b[sort.column])
+          return 1;
+        return 0;
+      }
+
+      let newEntries = this.indication_plus;
+      if(this.sort.by == 'asc'){
+        newEntries.sort(compareAsc);
+      }else{
+        newEntries.sort(compareDesc);
+
+      }
+      return newEntries;
     },
   },
   mounted() {

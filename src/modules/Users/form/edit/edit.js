@@ -46,7 +46,6 @@ export default {
                 "password": self.password,
                 "phone": "+85512345221",
             };
-            console.log(data)
             httpAxios({
                 url: '/user/update_user',
                 method: 'PUT',

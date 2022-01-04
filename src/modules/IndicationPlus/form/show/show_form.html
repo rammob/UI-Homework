@@ -34,6 +34,55 @@
                         </div>  
                     </div>
                 </div>
+                <!-- Button trigger modal -->
+                
+                <button type="button" v-bind:class="{'d-none': form.case_status == 'Appvored',
+                                                    'btn btn-primary': form.case_status != 'Appvored'}"
+                        data-bs-toggle="modal" 
+                        data-bs-target="#exampleModal">
+                    Progress Case
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Progressing Case</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body modal-lg">
+                            <div class="row">
+                                <div class="col-md-6 field">
+                                    <label class="label">Case Status <span class="text-danger"> *</span></label>
+                                    <select class="form-control" v-model="model.case_status"
+                                        v-bind:class="{ 'is-valid': validation.valid.case_status, 'is-invalid': validation.invalid.case_status }" 
+                                        >
+                                        <option v-for="case_status in ['-','Appvored','Pending','Final Draft']">
+                                            {{case_status}}
+                                        </option>
+                                    </select>
+                                    <div class="valid-feedback" v-if="validation.valid.case_status">{{ validation.valid.case_status }}</div>
+                                    <div class="invalid-feedback" v-if="validation.invalid.case_status">{{ validation.invalid.case_status }}</div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="case">Total Price</label> 
+                                    <input id="case" type="number" class="form-control" autocomplete="false" 
+                                            v-bind:class="{ 'is-valid': validation.valid.current_value_of_improvement, 'is-invalid': validation.invalid.current_value_of_improvement }" 
+                                            v-model="model.current_value_of_improvement"
+                                    />
+                                    <div class="valid-feedback" v-if="validation.valid.current_value_of_improvement">{{ validation.valid.current_value_of_improvement }}</div>
+                                    <div class="invalid-feedback" v-if="validation.invalid.current_value_of_improvement">{{ validation.invalid.current_value_of_improvement }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" @click.prevent="submit">Submit</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
             </section>
           </div>
         </div>

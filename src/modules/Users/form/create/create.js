@@ -28,6 +28,16 @@ export default {
     },
     submit() {
       const self = this.form;
+      if(!self.name){
+        this.validation.invalid.name = 'Require Field Name';
+      }
+      if(!self.email){
+          this.validation.invalid.email = 'Require Field Email';
+      }
+      if(!self.password){
+        this.validation.invalid.password = 'Require Field Password';
+      }
+
       const data = {
         "name": self.name,
         "email": self.email,

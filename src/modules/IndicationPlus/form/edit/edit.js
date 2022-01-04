@@ -75,7 +75,6 @@ export default {
                 "due_date": moment(String(self.due_date)).format(),
                 "indication_date": moment(String(self.indication_date)).format()
             };
-            console.log(data)
             httpAxios({
                 url: '/submit_case/update_submit_case',
                 method: 'PUT',
