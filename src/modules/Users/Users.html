@@ -7,9 +7,9 @@
             <div class="col-md-9">
               <a href="http://localhost:8080/admin/user/create" type="button" class="btn btn-primary btn-md mb-4">+ Add</a>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 pb-3">
               <label class="">Search</label>
-              <input type="text" class="form-control"/>
+              <input type="text"  v-model="search" class="form-control" placeholder="Search here..."/>
             </div>
           </div>
           <div class="table-responsive p-0">
@@ -63,6 +63,19 @@
                 </tr>
               </tbody>
             </table>
+            <div class="d-flex justify-content align-item-stretch mt-4">
+              <div class="d-flex align-items-center" style="margin-top:-17px;">
+                <div class="me-2">Show</div>
+                <select class="form-select" v-model='limitPerPage' style="width: 80px">
+                  <option :value="5">5</option>
+                  <option :value="10">10</option>
+                  <option :value="25">25</option>
+                  <option :value="50">50</option>
+                  <option :value="100">100</option>
+                </select>
+                <div class="ms-2">Form {{pageInfo.pre_page}} to {{pageInfo.page}} of {{pageInfo.total}} entries</div>
+              </div>
+            </div>
         </div>
       </div>
     </div>

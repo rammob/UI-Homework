@@ -800,7 +800,6 @@ body {
 #sidebar:not(.active) ~ #main {
   margin-left: 0;
 }
-
 .sidebar-wrapper {
   width: 300px;
   height: 100vh;

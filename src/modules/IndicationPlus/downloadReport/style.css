@@ -1,0 +1,35 @@
+#report {
+    font-family: Nunito;
+    width: 15.7cm;
+    height: 21cm;
+    padding: 2px;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+   
+  }
+.report-body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.logo1{
+    margin:20px 10px 10px 10px;
+    width: 162px;
+    height: 62px;
+}
+.logo2{
+    margin:25px 10px 0px 20px;
+    width: 252px;
+    height: 52px;
+}
+.footer{
+    margin: auto 0;
+    margin: 20px 10px 0px 20px;
+    width: 550px;
+    height: 100px;
+}
+td,th{    
+    border-right: 1px dotted #000000;
+    border-bottom: 1px dotted #000000;
+}

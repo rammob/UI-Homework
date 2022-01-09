@@ -114,55 +114,57 @@
                                         <div class="valid-feedback" v-if="validation.valid.land_area">{{ validation.valid.land_area }}</div>
                                         <div class="invalid-feedback" v-if="validation.invalid.land_area">{{ validation.invalid.land_area }}</div>
                                     </div>
-                                    <nav class="navbar navbar-primary px-0">
-                                        <div class="container bg-primary rounded py-2 text-white">
-                                            <h4 class="mb-0 text-white">Building Information</h4>
+                                    <div class="row" v-if="!disabled_fields">
+                                        <nav class="navbar navbar-primary px-0">
+                                            <div class="container bg-primary rounded py-2 text-white">
+                                                <h4 class="mb-0 text-white">Building Information</h4>
+                                            </div>
+                                        </nav>
+                                        <div class="col-md-6 field">
+                                            <label for="building_width">Building Width</label>
+                                            <input id="building_width"  type="text" placeholder="" class="form-control" autocomplete="false" 
+                                                v-bind:class="{ 'is-valid': validation.valid.building_width, 'is-invalid': validation.invalid.building_width }" 
+                                                v-on:focus="clearValidation('building_width')" v-model="form.building_width"
+                                            />
+                                            <div class="valid-feedback" v-if="validation.valid.building_width">{{ validation.valid.building_width }}</div>
+                                            <div class="invalid-feedback" v-if="validation.invalid.building_width">{{ validation.invalid.building_width }}</div>
                                         </div>
-                                    </nav>
-                                    <div class="col-md-6 field">
-                                        <label for="building_width">Building Width</label>
-                                        <input id="building_width"  type="text" placeholder="" class="form-control" autocomplete="false" 
-                                            v-bind:class="{ 'is-valid': validation.valid.building_width, 'is-invalid': validation.invalid.building_width }" 
-                                            v-on:focus="clearValidation('building_width')" v-model="form.building_width"
-                                        />
-                                        <div class="valid-feedback" v-if="validation.valid.building_width">{{ validation.valid.building_width }}</div>
-                                        <div class="invalid-feedback" v-if="validation.invalid.building_width">{{ validation.invalid.building_width }}</div>
-                                    </div>
-                                    <div class="col-md-6 field">
-                                        <label for="building_length">Building Length</label>
-                                        <input id="building_length"  type="text" placeholder="" class="form-control" autocomplete="false" 
-                                            v-bind:class="{ 'is-valid': validation.valid.building_length, 'is-invalid': validation.invalid.building_length }" 
-                                            v-on:focus="clearValidation('building_length')" v-model="form.building_length"
-                                        />
-                                        <div class="valid-feedback" v-if="validation.valid.building_length">{{ validation.valid.building_length }}</div>
-                                        <div class="invalid-feedback" v-if="validation.invalid.building_length">{{ validation.invalid.building_length }}</div>
-                                    </div>
-                                    <div class="col-md-6 field">
-                                        <label for="building_floor">Building Floor</label>
-                                        <input id="building_floor"  type="text" placeholder="" class="form-control" autocomplete="false" 
-                                            v-bind:class="{ 'is-valid': validation.valid.building_floor, 'is-invalid': validation.invalid.building_floor }" 
-                                            v-on:focus="clearValidation('building_floor')" v-model="form.building_floor"
-                                        />
-                                        <div class="valid-feedback" v-if="validation.valid.building_floor">{{ validation.valid.building_floor }}</div>
-                                        <div class="invalid-feedback" v-if="validation.invalid.building_floor">{{ validation.invalid.building_floor }}</div>
-                                    </div>
-                                    <div class="col-md-6 field">
-                                        <label for="building_story">Building Story</label>
-                                        <input id="building_story"  type="text" placeholder="" class="form-control" autocomplete="false" 
-                                            v-bind:class="{ 'is-valid': validation.valid.building_story, 'is-invalid': validation.invalid.building_story }" 
-                                            v-on:focus="clearValidation('building_story')" v-model="form.building_story"
-                                        />
-                                        <div class="valid-feedback" v-if="validation.valid.building_story">{{ validation.valid.building_story }}</div>
-                                        <div class="invalid-feedback" v-if="validation.invalid.building_story">{{ validation.invalid.building_story }}</div>
-                                    </div>
-                                    <div class="col-md-6 field">
-                                        <label for="building_area">Building Area</label>
-                                        <input id="building_area"  type="text" placeholder="" class="form-control" autocomplete="false" 
-                                            v-bind:class="{ 'is-valid': validation.valid.building_area, 'is-invalid': validation.invalid.building_area }" 
-                                            v-on:focus="clearValidation('building_area')" v-model="form.building_area"
-                                        />
-                                        <div class="valid-feedback" v-if="validation.valid.building_area">{{ validation.valid.building_area }}</div>
-                                        <div class="invalid-feedback" v-if="validation.invalid.building_area">{{ validation.invalid.building_area }}</div>
+                                        <div class="col-md-6 field">
+                                            <label for="building_length">Building Length</label>
+                                            <input id="building_length"  type="text" placeholder="" class="form-control" autocomplete="false" 
+                                                v-bind:class="{ 'is-valid': validation.valid.building_length, 'is-invalid': validation.invalid.building_length }" 
+                                                v-on:focus="clearValidation('building_length')" v-model="form.building_length"
+                                            />
+                                            <div class="valid-feedback" v-if="validation.valid.building_length">{{ validation.valid.building_length }}</div>
+                                            <div class="invalid-feedback" v-if="validation.invalid.building_length">{{ validation.invalid.building_length }}</div>
+                                        </div>
+                                        <div class="col-md-6 field">
+                                            <label for="building_floor">Building Floor</label>
+                                            <input id="building_floor"  type="text" placeholder="" class="form-control" autocomplete="false" 
+                                                v-bind:class="{ 'is-valid': validation.valid.building_floor, 'is-invalid': validation.invalid.building_floor }" 
+                                                v-on:focus="clearValidation('building_floor')" v-model="form.building_floor"
+                                            />
+                                            <div class="valid-feedback" v-if="validation.valid.building_floor">{{ validation.valid.building_floor }}</div>
+                                            <div class="invalid-feedback" v-if="validation.invalid.building_floor">{{ validation.invalid.building_floor }}</div>
+                                        </div>
+                                        <div class="col-md-6 field">
+                                            <label for="building_story">Building Story</label>
+                                            <input id="building_story"  type="text" placeholder="" class="form-control" autocomplete="false" 
+                                                v-bind:class="{ 'is-valid': validation.valid.building_story, 'is-invalid': validation.invalid.building_story }" 
+                                                v-on:focus="clearValidation('building_story')" v-model="form.building_story"
+                                            />
+                                            <div class="valid-feedback" v-if="validation.valid.building_story">{{ validation.valid.building_story }}</div>
+                                            <div class="invalid-feedback" v-if="validation.invalid.building_story">{{ validation.invalid.building_story }}</div>
+                                        </div>
+                                        <div class="col-md-6 field">
+                                            <label for="building_area">Building Area</label>
+                                            <input id="building_area"  type="text" placeholder="" class="form-control" autocomplete="false" 
+                                                v-bind:class="{ 'is-valid': validation.valid.building_area, 'is-invalid': validation.invalid.building_area }" 
+                                                v-on:focus="clearValidation('building_area')" v-model="form.building_area"
+                                            />
+                                            <div class="valid-feedback" v-if="validation.valid.building_area">{{ validation.valid.building_area }}</div>
+                                            <div class="invalid-feedback" v-if="validation.invalid.building_area">{{ validation.invalid.building_area }}</div>
+                                        </div>
                                     </div>
                                     <nav class="navbar navbar-primary px-0">
                                         <div class="container bg-primary rounded py-2 text-white">

@@ -20,8 +20,24 @@ export default {
                 validation: {
                     invalid: {},
                     valid: {}
-                }
+                },
+                disabled_fields: false
             };
+    },
+    watch: {
+        form: {
+            handler(val) {
+                if (val.land_width && val.land_length) {
+                    this.form.land_area = val.land_width * val.land_length;
+                }
+                if(val.record_type == 'Land') {
+                    this.disabled_fields = true;
+                } else {
+                    this.disabled_fields = false;
+                }
+            },
+            deep: true
+        }
     },
     methods: {
         clearValidation: function() {
@@ -74,6 +90,6 @@ export default {
                   this.form = response.data;
               });
         },
-    }  
+    },
 };
 

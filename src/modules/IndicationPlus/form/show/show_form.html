@@ -13,52 +13,82 @@
                                 </div>
                             </nav>   
                         </div>
-                        <div class="col-md-6 field column pl-4">
+                        <div class="col-md-6 column pl-2 py-2">
                             <label> Case ID: {{form.id}}</label>
                         </div>
-                        <div class="col-md-6 field column">
+                        <div class="col-md-6 column pl-2 py-2">
                             <label> Status: {{form.case_status}}</label>
                         </div>  
+
+                        <div class="col-md-6 column  pl-2 py-2">
+                            <label> Record Type: {{form.record_type}}</label>
+                        </div>
+                        <div class="col-md-6 column pl-2 py-2">
+                            <label> Property Type: {{form.type}}</label>
+                        </div>  
+                        <div class="col-md-6 column  pl-2 py-2">
+                            <label> Current Use: {{form.current_use}}</label>
+                        </div>
+                        <div class="col-md-6 column pl-2 py-2">
+                            <label> Instructor date: {{form.instructor_date}}</label>
+                        </div>
+                        <div class="col-md-6 column pl-2 py-2">
+                            <label> Indication Price: {{form.current_value_of_improvement}} USD</label>
+                        </div>
                         <div class="col-md-12 column">
                             <nav class="navbar navbar-primary px-0">
                                 <div class="container bg-primary rounded py-2 text-white">
-                                    <h4 class="mb-0 text-white">Property Information</h4>
+                                    <h4 class="mb-0 text-white">Address Information</h4>
                                 </div>
                             </nav>   
                         </div>
-                        <div class="col-md-6 field column  pl-4">
-                            <label> Record Type: {{form.record_type}}</label>
-                        </div>
-                        <div class="col-md-6 field column">
-                            <label> Property Type: {{form.type}}</label>
+                        <div class="col-md-6 column pl-2 py-2">
+                            <label> Street No: {{form.street_no}}</label>
                         </div>  
+                        <div class="col-md-6 column pl-2 py-2">
+                            <label> House No: {{form.house_no}}</label>
+                        </div>
+                        <div class="col-md-6 column pl-2 py-2">
+                            <label> Address : {{form.address}}</label>
+                        </div>
+                        <div class="col-md-12 column pl-2 py-2">
+                            <nav class="navbar navbar-primary px-0">
+                                <div class="container bg-primary rounded py-2 text-white">
+                                    <h4 class="mb-0 text-white">Additional Information</h4>
+                                </div>
+                            </nav>   
+                        </div>
+                        <div class="col-md-12 column pl-2 py-2">
+                            <p> {{form.description}}</p>
+                        </div>
                     </div>
                 </div>
+                <a class="btn btn-primary" type="button" :href="'http://localhost:8080/admin/indication-plus/download?id='+form.id">Preview Report</a>
                 <!-- Button trigger modal -->
                 
-                <button type="button" v-bind:class="{'d-none': form.case_status == 'Appvored',
+                <button type="button" v-bind:class="{'d-none': form.case_status == 'Approved' || form.case_status == 'Approved',
                                                     'btn btn-primary': form.case_status != 'Appvored'}"
                         data-bs-toggle="modal" 
                         data-bs-target="#exampleModal">
-                    Progress Case
+                        Manually Indication
                 </button>
                 
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Progressing Case</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Manually Indication</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body modal-lg">
+                        <div class="modal-body">
                             <div class="row">
                                 <div class="col-md-6 field">
                                     <label class="label">Case Status <span class="text-danger"> *</span></label>
                                     <select class="form-control" v-model="model.case_status"
                                         v-bind:class="{ 'is-valid': validation.valid.case_status, 'is-invalid': validation.invalid.case_status }" 
                                         >
-                                        <option v-for="case_status in ['-','Appvored','Pending','Final Draft']">
+                                        <option v-for="case_status in ['-','Approved','Pending']">
                                             {{case_status}}
                                         </option>
                                     </select>

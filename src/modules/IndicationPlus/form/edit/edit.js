@@ -31,7 +31,7 @@ export default {
         getData(){
             const id = this.$route.query.id;
             httpAxios({
-                url: '/user/'+id,
+                url: '/submit_case/'+id,
                 method: 'GET',
             }).then(async (response) => {
                 this.form = response.data;
@@ -73,7 +73,7 @@ export default {
                 "case_status": self.case_status,
                 "instructor_date": moment(String(self.instructor_date)).format(),
                 "due_date": moment(String(self.due_date)).format(),
-                "indication_date": moment(String(self.indication_date)).format()
+                "indication_date": moment(String(self.instructor_date)).format()
             };
             httpAxios({
                 url: '/submit_case/update_submit_case',

@@ -1,0 +1,94 @@
+<adminLayout>
+  <div class="col-6">
+      <h1 class="title is-1">Preview Indication Plus Report</h1>
+      <div class="card mb-4 p-4">
+        <div class="card-body px-0 pt-0 pb-2">
+          <section id="app" class="section">
+              <div id="review">
+                <div id="report" class="columns report-body">
+                  <div class="row">
+                      <div class="col-md-6">
+                        <img class="logo1" :src="require('@/assets/images/logo1.png')" alt="Logo" srcset=""/>
+                      </div>
+                      <div class="col-md-6">
+                        <img class="logo2 pt-2" :src="require('@/assets/images/word.png')" alt="Logo" srcset=""/>
+                      </div>
+                      <div class="col-md-12">
+                        <span class="text-white text-center d-flex justify-content-between mx-4 p-2"  style="background-color: #8b191c; font-size:12px;">
+                          <label for="">INDICATION PLUS - {{form.type}}</label>
+                          <label for="">References No : {{form.id}}</label> 
+                        </span>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="px-5 pt-2" style="font-size:12px;">
+                          <div class="ml-6"><b>Instructor Date</b> : {{form.instructor_date}}</div>
+                          <div class="ml-6"><b>Property Type</b> : {{form.type}}</div>
+                          <div class="ml-6"><b>Address</b> : {{form.address}}</div>
+                          <div class="ml-6"><b>Indication Date</b> : {{form.indication_date}}</div>
+                        </div>
+                      </div>
+                      <div class="col-md-12" style="font-size:12px;">
+                        <div class="px-4">
+                          <table class="table">
+                            <thead>
+                              <tr class="text-center text-white" style="
+                              background-color: #8b191c; 
+                              border-left: 1px dotted #000000;
+                              border-bottom: 1px dotted #000000;
+                              ">
+                                <th width="5%">No.</th>
+                                <th width="30%">Description</th>
+                                <th width="35%">Area (sq.m)</th>
+                                <th width="30%">Estimated Value</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr style="border-left: 1px dotted #000000;">
+                                <td>1</td>
+                                <td>{{form.record_type}}</td>
+                                <td>{{form.land_area}}</td>
+                                <td>US$ {{form.current_value_of_improvement}}</td>
+                              </tr>
+                              <tr class="bg-light" style="border-left: 1px dotted #000000;">
+                                <td  class="text-left" colspan="3" style="color: #8b191c;">Concluded Opinion of Indicative Value (IV), Say:</td>
+                                <td style="color: #8b191c;">US$ {{form.current_value_of_improvement}}</td>
+                              </tr>
+                              <tr class="bg-light" style="border-left: 1px dotted #000000;">
+                                <td colspan="3" style="color: blue;">Forced Sale Value (FSV)@ 60% of IV, Say:</td> 
+                                <td style="color: blue;">US$ {{form.current_value_of_improvement}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <div><label><b>Assumption/Special Assumption :</b> As Is Basis</label></div>
+                          <div><label><b>Basis of Value :</b>Our opinion of Indicative Value (IV) provided above is a Market Value</label></div>
+                          <div><label><b>Methodology Applied :</b> Sales Comparison Approach </label></div>
+                        </div>
+                      </div>
+                      <div class="col-md-12" style="font-size:12px;">
+                        <span class="px-4 pt-2">Photos :</span>
+                        <div class="px-5 pt-2 d-flex justify-content-between">
+                          <div class="1">
+                            <img style="width:auto;height:190px" :src="require('@/assets/images/pro.png')" alt="Logo" srcset=""/>
+                            <p>Image: Front Side View of Subject Property </p>
+                          </div>
+                          <div class="2">
+                            <img style="width:auto;height:190px" :src="require('@/assets/images/pro.png')" alt="Logo" srcset=""/>
+                            <p>Image: Inside Side View of Subject Property </p>
+                          </div>                      
+                        </div>
+                      </div>
+                      <div class="col-md-12" style="font-size:12px;">
+                        <label class="px-4">
+                          <b>Authorized By : VTrust Appraisal Co., Ltd</b>
+                        </label>
+                      </div>
+                  </div>
+                  <img class="footer" :src="require('@/assets/images/footer.png')" alt="Logo" srcset=""/>
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary"  href="#" @click.prevent="downloadReport">Download Report</button>              
+          </section>
+        </div>
+      </div>
+    </div>
+</adminLayout>

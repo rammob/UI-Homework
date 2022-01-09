@@ -8,6 +8,8 @@ const show_form = () => import('@/modules/IndicationPlus/form/show');
 const create_form_user = () => import('@/modules/Users/form/create');
 const edit_form_user = () => import('@/modules/Users/form/edit');
 const show_form_user = () => import('@/modules/Users/form/show');
+const downloadReport = () => import('@/modules/IndicationPlus/downloadReport');
+
 
 // Export
 export default [
@@ -35,7 +37,7 @@ export default [
   {
     path: '/admin/user/create',
     component: create_form_user,
-    name: 'admin.user',
+    name: 'admin.user.create',
     meta: {
       auth: true,
       breadCrumb: [{ name: 'create_form_user', link: 'admin.user.create' }],
@@ -94,6 +96,15 @@ export default [
     meta: {
       auth: true,
       breadCrumb: [{ name: 'show_form', link: 'admin.indication-plus.show' }],
+    },
+  },
+  {
+    path: '/admin/indication-plus/download',
+    component: downloadReport,
+    name: 'admin.indication-plus.download',
+    meta: {
+      auth: true,
+      breadCrumb: [{ name: 'download', link: 'admin.indication-plus.download' }],
     },
   },
 ];

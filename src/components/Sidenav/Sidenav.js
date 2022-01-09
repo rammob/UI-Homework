@@ -15,14 +15,15 @@ export default {
        this.$route.name  == 'admin.indication-plus' ||
        this.$route.name == 'admin.indication-plus.create' || 
        this.$route.name == 'admin.indication-plus.edit' || 
-       this.$route.name == 'admin.indication-plus.show'){
+       this.$route.name == 'admin.indication-plus.show' ||
+       this.$route.name == 'admin.indication-plus.download'){
         const sidenav = document.getElementById("case");
         sidenav.classList.add('active');
       }else if(
       this.$route.name == 'admin.users' ||
-      this.$route.name == 'admin.users.create' || 
-      this.$route.name == 'admin.users.edit' || 
-      this.$route.name == 'admin.users.show'){
+      this.$route.name == 'admin.user.create' || 
+      this.$route.name == 'admin.user.edit' || 
+      this.$route.name == 'admin.user.show'){
         const sidenav = document.getElementById("user");
         sidenav.classList.add('active');
       }

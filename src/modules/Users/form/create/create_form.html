@@ -46,6 +46,9 @@
                                         <div class="invalid-feedback" v-if="validation.invalid.password">{{ validation.invalid.password }}</div>
                                     </div>
                                     <div class="col-md-12 field pt-4">
+                                        <input class="form-control" type="file" v-model="form.filename"/>
+                                    </div>
+                                    <div class="col-md-12 field pt-4">
                                         <button class="btn btn-primary margin-bottom pl-0" type="submit"> Submit</button>
                                     </div>
                                 </div>

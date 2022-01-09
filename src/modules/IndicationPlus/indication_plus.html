@@ -9,7 +9,7 @@
           </div>
           <div class="col-md-3 mb-3">
             <label class="">Search</label>
-            <input type="text" class="form-control"/>
+            <input type="text"  v-model="search" class="form-control" placeholder="Search here..."/>
           </div>
         </div>
         <div class="table-responsive p-0">
@@ -63,6 +63,38 @@
                 </tr>
               </tbody>
             </table>
+            <div class="d-flex justify-content align-item-stretch mt-4">
+              <div class="d-flex align-items-center" style="margin-top:-17px;">
+                <div class="me-2">Show</div>
+                <select class="form-select" v-model='limitPerPage' style="width: 80px">
+                  <option :value="5">5</option>
+                  <option :value="10">10</option>
+                  <option :value="25">25</option>
+                  <option :value="50">50</option>
+                  <option :value="100">100</option>
+                </select>
+                <div class="ms-2">Form {{pageInfo.pre_page}} to {{pageInfo.page}} of {{pageInfo.total}} entries</div>
+              </div>
+            </div>
+            <!-- <div>
+              <ul class="pagination">
+                <li class="page-item">
+                  <a href="#" class="page-link text-dark" @click.prevent="pageActive = 1">&#171;</a>
+                </li>
+                <li class="page-item">
+                  <a href="#" class="page-link text-dark" @click.prevent="pageActive = (page > 1) ? Number(pageActive) - 1: pageActive">&#8249;</a>
+                </li>
+                <li v-for="(page,index) in paginator(sortedArray(), 1, limitPerPage )" :key="index" :class="['page-item', {disabled: isNaN(page) === true, active: page === pageActive}]">
+                  <a href="#" :class="['page-link' , {'text-dark' : page !== pageActive}]" @click.prevent="pageActive = page">{{index}}</a>
+                </li>
+                <li class="page-item">
+                  <a href="#" class="page-link text-dark" @click.prevent="pageActive = (pageActive < pageInfo.total_pages) ? Number(pageActive) + 1: pageActive">&#8250;</a>
+                </li>
+                <li class="page-item">
+                  <a href="#" class="page-link text-dark " @click.prevent="pageActive = pageInfo.total_pages">&#187;</a>
+                </li>
+              </ul>
+            </div> -->
         </div>
       </div>
     </div>

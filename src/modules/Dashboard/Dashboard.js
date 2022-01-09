@@ -1,6 +1,5 @@
 import adminLayout from '@/layouts/Admin';
-// import httpAxios from '@/utils/http-axios';
-// import moment from 'moment';
+import httpAxios from '@/utils/http-axios';
 
 export default {
   name: 'Dashboard',
@@ -12,18 +11,16 @@ export default {
         indication_plus : [],
       }
   },
-  // methods: {
-  //   refreshData() {
-  //     httpAxios({
-  //       url: '/user/get_all_user/',
-  //       method: 'GET',
-  //     }).then(async (response) => {
-  //         response.data.forEach((e,i) => {
-  //           response.data[i].created_at = moment(String(e.created_at)).format("MMM Do YY");
-  //         });
-  //         this.indication_plus = response.data;
-  //     });
-  //   },
+  methods: {
+    refreshData() {
+      httpAxios({
+        url: '/case_count',
+        method: 'GET',
+      }).then(async (response) => {
+          this.indication_plus = response.data;
+          console.log(this.indication_plus)
+      });
+    },
   //   sortedArray: function() {
   //     function compare(a, b) {
   //       if (a.id > b.id)
@@ -35,8 +32,8 @@ export default {
   //     return this.indication_plus.sort(compare);
   //   },
   // },
- 
-  // mounted() {
-  //   this.refreshData();
-  // }
+  },
+  mounted() {
+    this.refreshData();
+  }
 };
