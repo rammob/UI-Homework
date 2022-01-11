@@ -45,6 +45,27 @@
                                         <div class="valid-feedback" v-if="validation.valid.password">{{ validation.valid.password }}</div>
                                         <div class="invalid-feedback" v-if="validation.invalid.password">{{ validation.invalid.password }}</div>
                                     </div>
+                                    <div class="col-md-6 field">
+                                        <label class="label">User Type</label>
+                                        <select class="form-control">
+                                            <option v-for="type in types">
+                                                {{form.type}}
+                                            </option>
+                                        </select>
+                                        <div class="valid-feedback" v-if="validation.valid.record_type">{{ validation.valid.record_type }}</div>
+                                        <div class="invalid-feedback" v-if="validation.invalid.record_type">{{ validation.invalid.record_type }}</div>
+                                    </div>
+                                    <div class="col-md6"></div>
+                                    <div class="col-md-6 field pt-4">
+                                        <input class="form-control" id="file" ref="myFiles" @change="previewFiles" type="file"/>
+                                        <img class="rounded pt-2"
+                                        id="profile"
+                                        v-if="form.profile && !url"
+                                        style="height:150px;" 
+                                        :src="'http://127.0.0.1:8000/'+form.profile" 
+                                        alt="Logo" srcset="" />
+                                        <img class="rounded pt-2" style="height:150px;" v-if="url" :src="url" alt="profile"/>
+                                    </div>
                                     <div class="col-md-12 field pt-4">
                                         <button class="btn btn-primary margin-bottom pl-0" type="submit"> Submit</button>
                                     </div>

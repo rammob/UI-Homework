@@ -59,7 +59,6 @@ export default {
       const sort = this.sort;
       const search = this.search;
       function compareAsc(a, b) {
-        console.log(a[sort.column])
         if (a[sort.column] < b[sort.column])
           return -1;
         if (a[sort.column] > b[sort.column])

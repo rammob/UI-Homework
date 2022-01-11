@@ -14,8 +14,21 @@ export default {
                 validation: {
                     invalid: {},
                     valid: {}
-                }
+                },
+                disabled_fields: true
             };
+    },
+    watch: {
+        model: {
+            handler(val) {
+                if(val.case_status != 'Pending') {
+                    this.disabled_fields = true;
+                } else {
+                    this.disabled_fields = false;
+                }
+            },
+            deep: true
+        }
     },
     methods: {
         clearValidation: function() {
@@ -38,16 +51,19 @@ export default {
             const self = this.model;
             const id = this.$route.query.id;
             console.log(self.case_status);
-            if(!self.case_status || self.case_status == '-' || !self.current_value_of_improvement){
+            if(!self.case_status || self.case_status == '-'){
                 this.validation.invalid.case_status = 'Require Field Case Status';
-                this.validation.invalid.current_value_of_improvement = 'Require Field Final Price';
+                if(self.case_status != 'Pending' || !self.current_value_of_improvement){
+                    this.validation.invalid.current_value_of_improvement = 'Require Field Final Price';
+                }
             }else{
                 httpAxios({
                     url: 'submit_case/start_manually?id='+id,
                     method: 'PUT',
                     data : {
                             case_status:self.case_status, 
-                            current_value_of_improvement:self.current_value_of_improvement
+                            current_value_of_improvement:self.current_value_of_improvement,
+                            pending_reason:self.pending_reason
                             }
                 }).then(async (response) => {
                     this.model = response.data;
@@ -55,9 +71,6 @@ export default {
                 });
             }
         },
-        downloadReport() {
-
-        }
     },
     mounted(){
         this.getData();

@@ -33,7 +33,7 @@ export default {
   methods: {
     refreshData() {
       httpAxios({
-        url: '/submit_case/get_all_submit_case/',
+        url: '/submit_case/get_all_submit_case_by_user/',
         method: 'GET',
       }).then(async (response) => {
           response.data.forEach((e,i) => {

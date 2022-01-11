@@ -46,12 +46,14 @@
                       data-toggle="tooltip" data-original-title="Show Indication">
                       <i class="fa fa-eye"></i>
                     </a>
-                    <a :href="'http://localhost:8080/admin/user/edit?id='+entry.id" 
-                        class="btn btn-success btn-sm text-white font-weight-bold text-md pl-1" 
-                        data-toggle="tooltip" 
-                        data-original-title="Edit Indication">
-                        <i class="fa fa-edit"></i>
+                    <span class='p-2'>
+                      <a :href="'http://localhost:8080/admin/user/edit?id='+entry.id" 
+                          class="btn btn-success btn-sm text-white font-weight-bold text-md pl-1" 
+                          data-toggle="tooltip" 
+                          data-original-title="Edit Indication">
+                          <i class="fa fa-edit"></i>
                       </a>
+                    </span>
                     <button @click.prevent="deleteItem(entry.id)" 
                             :href="'http://localhost:8080/admin/user/delete/'+entry.id" 
                             class="btn btn-danger btn-sm text-white font-weight-bold text-md" 

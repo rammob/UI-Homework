@@ -9,6 +9,9 @@ export default {
     data() {
         return {
              form : {},
+             url: null,
+             files:'',
+             types : ['Normal','Admin'],
              validation: {
                 invalid: {},
                 valid: {}
@@ -17,6 +20,17 @@ export default {
         };
     },
     methods: {
+        previewFiles() {
+            const file = this.$refs.myFiles.files[0];
+            const reader = new FileReader();
+            let rawImg;
+            reader.onloadend = () => {
+              rawImg = reader.result;
+              this.files = rawImg;
+            }
+            reader.readAsDataURL(file);
+            this.url = URL.createObjectURL(file);
+        },
         clearValidation: function() {
             // this.validation.valid[field] = '';
             // this.validation.invalid[field] = '';
@@ -45,6 +59,9 @@ export default {
                 "email": self.email,
                 "password": self.password,
                 "phone": "+85512345221",
+                "profile": this.files,
+                "type" : self.types
+
             };
             httpAxios({
                 url: '/user/update_user',

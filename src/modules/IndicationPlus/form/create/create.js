@@ -21,6 +21,8 @@ export default {
                     invalid: {},
                     valid: {}
                 },
+                files: '',
+                url : null,
                 disabled_fields: false
             };
     },
@@ -40,6 +42,17 @@ export default {
         }
     },
     methods: {
+        previewFiles() {
+            const file = this.$refs.myFiles.files[0];
+            const reader = new FileReader();
+            let rawImg;
+            reader.onloadend = () => {
+              rawImg = reader.result;
+              this.files = rawImg;
+            }
+            reader.readAsDataURL(file);
+            this.url = URL.createObjectURL(file);
+         },
         clearValidation: function() {
             // this.validation.valid[field] = '';
             // this.validation.invalid[field] = '';
@@ -75,6 +88,7 @@ export default {
                 "type": self.type ?? '',
                 "created_by": 2,
                 "updated_by":  2,
+                "front_side_image" : this.files,
                 "created_at": moment(String(new Date().toLocaleDateString())).format(),
                 "updated_at": moment(String(new Date().toLocaleDateString())).format(),
                 "current_use": self.current_use ?? '',
@@ -82,6 +96,7 @@ export default {
                 "instructor_date": "2021-12-29T06:47:04.499Z",
                 "due_date": "2021-12-29T06:47:04.499Z",
             };
+            console.log(data);
             httpAxios({
                 url: '/submit_case/create_submit_case',
                 method: 'POST',

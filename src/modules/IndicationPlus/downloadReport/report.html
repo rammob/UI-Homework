@@ -1,8 +1,9 @@
 <adminLayout>
-  <div class="col-6">
+  <div class="col-8 bg-0">
       <h1 class="title is-1">Preview Indication Plus Report</h1>
-      <div class="card mb-4 p-4">
+      <div class="mb-4 p-4">
         <div class="card-body px-0 pt-0 pb-2">
+          <button type="button" class="btn btn-primary"  href="#" @click.prevent="downloadReport">Download Report</button>
           <section id="app" class="section">
               <div id="review">
                 <div id="report" class="columns report-body">
@@ -86,8 +87,7 @@
                   <img class="footer" :src="require('@/assets/images/footer.png')" alt="Logo" srcset=""/>
                 </div>
               </div>
-              <button type="button" class="btn btn-primary"  href="#" @click.prevent="downloadReport">Download Report</button>              
-          </section>
+          </section>          
         </div>
       </div>
     </div>

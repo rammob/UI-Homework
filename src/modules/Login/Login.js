@@ -49,7 +49,7 @@ export default {
             this.validation.invalid.password = 'Invalid Password';
           }else{
             self.$store.commit('LOGGED_USER', response);
-            self.$router.push('/admin/dashboard');
+            self.$router.go('/admin/dashboard');
           }
       });
     }

@@ -4,49 +4,32 @@
   </div>
   <div class="page-content">
     <section class="row">
-      <div class="col-12">
+      <div class="col-9 px-0">
         <div class="row">
-          <div class="col-6 col-lg-3 col-md-6">
+          <div class="col-6 col-lg-4 col-md-6">
             <div class="card">
               <div class="card-body px-3 py-4-5">
                 <div class="row">
                   <div class="col-md-4">
                     <div class="stats-icon purple">
-                      <i class="fas fa-eye"></i>
+                      <i class="fab fa-buffer"></i>
                     </div>
                   </div>
                   <div class="col-md-8">
-                    <h6 class="text-muted font-semibold">Competed</h6>
-                    <h6 class="font-extrabold mb-0">{{indication_plus['Appvored']}}</h6>
+                    <h6 class="text-muted font-semibold">All</h6>
+                    <h6 class="font-extrabold mb-0">{{totalRequest}}</h6>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-6 col-lg-3 col-md-6">
+          <div class="col-6 col-lg-4 col-md-6">
             <div class="card">
               <div class="card-body px-3 py-4-5">
                 <div class="row">
                   <div class="col-md-4">
-                    <div class="stats-icon blue">
-                      <i class="fas fa-user"></i>
-                    </div>
-                  </div>
-                  <div class="col-md-8">
-                    <h6 class="text-muted font-semibold">In Progress</h6>
-                    <h6 class="font-extrabold mb-0">{{indication_plus['In Progress']}}</h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-6 col-lg-3 col-md-6">
-            <div class="card">
-              <div class="card-body px-3 py-4-5">
-                <div class="row">
-                  <div class="col-md-4">
-                    <div class="stats-icon green">
-                      <i class="fas fa-users"></i>
+                    <div class="stats-icon orange">
+                      <i class="fas fa-briefcase"></i>
                     </div>
                   </div>
                   <div class="col-md-8">
@@ -57,10 +40,79 @@
               </div>
             </div>
           </div>
+          <div class="col-6 col-lg-4 col-md-6">
+            <div class="card">
+              <div class="card-body px-3 py-4-5">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="stats-icon red">
+                      <i class="fas fa-exclamation"></i>
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <h6 class="text-muted font-semibold">Pending</h6>
+                    <h6 class="font-extrabold mb-0">{{indication_plus['Pending']}}</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-lg-4 col-md-6">
+            <div class="card">
+              <div class="card-body px-3 py-4-5">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="stats-icon blue">
+                      <i class="fas fa-tasks"></i>
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <h6 class="text-muted font-semibold">In Progress</h6>
+                    <h6 class="font-extrabold mb-0">{{indication_plus['In Progress']}}</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-lg-4 col-md-6">
+            <div class="card">
+              <div class="card-body px-3 py-4-5">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="stats-icon pink">
+                      <i class="fas fa-flag-checkered"></i>
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <h6 class="text-muted font-semibold">Final Draft</h6>
+                    <h6 class="font-extrabold mb-0">{{indication_plus['Final Draft']}}</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-lg-4 col-md-6">
+            <div class="card">
+              <div class="card-body px-3 py-4-5">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="stats-icon green">
+                      <i class="fas fa-check"></i>
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <h6 class="text-muted font-semibold">Competed</h6>
+                    <h6 class="font-extrabold mb-0">{{indication_plus['Approved']}}</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <!-- <div class="col-9">
+      <div class="col-9">
         <div class="row">
           <div class="card">
             <div class="card-header">
@@ -68,13 +120,14 @@
             </div>
             <div class="card-body">
               <div class="row">
-                <div class="col-md-6">
-                  <div class="card" style="width: 18rem;">
-                    <img class="rounded" style="height:160px;width: 18rem;"src="https://zuramai.github.io/mazer/demo/assets/images/faces/5.jpg" />
+                <div v-for="(k,v) in cases" class="col-md-4">
+                  <div class="card" style="width: 15rem;">
                     <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                      <img v-if="k.front_side_image" class="rounded" style="height:150px;width:190px;" :src="'http://127.0.0.1:8000/'+k.front_side_image" />
+                      <img v-else class="rounded" style="height:150px;width:190px;" :src="require('@/assets/images/default-placeholder.png')" />
+                      <h6 class="card-title pt-2">{{k.type}}</h6>
+                      <p class="card-text">Land Area : {{k.land_area}}m</p>
+                      <a :href="'http://localhost:8080/admin/indication-plus/show?id='+k.id" class="btn btn-primary">Preview</a>
                     </div>
                   </div>
                 </div>
@@ -82,29 +135,7 @@
             </div>
           </div>
           </div>
-      </div> -->
-
-      <!-- <div class="col-4">
-        <div class="card">
-          <div class="card-header">
-            <h4>Recent Messages</h4>
-          </div>
-          <div class="card-content pb-4">
-            <div class="recent-message d-flex px-4 py-3" v-for="item in sortedArray()">
-              <div class="avatar avatar-lg">
-                <img src="https://zuramai.github.io/mazer/demo/assets/images/faces/5.jpg" />
-              </div>
-              <div class="name ms-4">
-                <h5 class="mb-1">{{item.name}}</h5>
-                <span class="text-muted mb-0">{{item.email}}</span>
-              </div>
-            </div>
-            <div class="px-4">
-              <button class="btn btn-block btn-xl btn-light-primary font-bold mt-3">Start Conversation</button>
-            </div>
-          </div>
-        </div>
-      </div> -->
+      </div>
     </section>
   </div>
 </adminLayout>

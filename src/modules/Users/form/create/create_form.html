@@ -10,7 +10,7 @@
                             <form class="p-2" v-on:submit.prevent="submit">
                                 <div class="row">                                     
                                     <div class="col-md-6 field">
-                                        <label for="name">Name</label>
+                                        <label for="name">Name<span class="text-danger"> *</span></label>
                                         <input id="name"  type="text" placeholder="" class="form-control" autocomplete="false" 
                                             v-bind:class="{ 'is-valid': validation.valid.name, 'is-invalid': validation.invalid.name }" 
                                             v-on:focus="clearValidation('name')" v-model="form.name"
@@ -28,7 +28,7 @@
                                         <div class="invalid-feedback" v-if="validation.invalid.phone">{{ validation.invalid.phone }}</div>
                                     </div>
                                     <div class="col-md-6 field">
-                                        <label for="email">Email</label>
+                                        <label for="email">Email<span class="text-danger"> *</span></label>
                                         <input id="email"  type="email" placeholder="" class="form-control" autocomplete="false" 
                                             v-bind:class="{ 'is-valid': validation.valid.email, 'is-invalid': validation.invalid.email }" 
                                             v-on:focus="clearValidation('email')" v-model="form.email"
@@ -37,7 +37,7 @@
                                         <div class="invalid-feedback" v-if="validation.invalid.email">{{ validation.invalid.email }}</div>
                                     </div>
                                     <div class="col-md-6 field">
-                                        <label for="password">Password</label>
+                                        <label for="password">Password<span class="text-danger"> *</span></label>
                                         <input id="password"  type="password" placeholder="" class="form-control" autocomplete="false" 
                                             v-bind:class="{ 'is-valid': validation.valid.password, 'is-invalid': validation.invalid.password }" 
                                             v-on:focus="clearValidation('password')" v-model="form.password"
@@ -45,8 +45,20 @@
                                         <div class="valid-feedback" v-if="validation.valid.password">{{ validation.valid.password }}</div>
                                         <div class="invalid-feedback" v-if="validation.invalid.password">{{ validation.invalid.password }}</div>
                                     </div>
-                                    <div class="col-md-12 field pt-4">
-                                        <input class="form-control" type="file" v-model="form.filename"/>
+                                    <div class="col-md-6 field">
+                                        <label class="label">User Type</label>
+                                        <select v-model="form.types" class="form-control">
+                                            <option v-for="type in types">
+                                                {{type}}
+                                            </option>
+                                        </select>
+                                        <div class="valid-feedback" v-if="validation.valid.record_type">{{ validation.valid.record_type }}</div>
+                                        <div class="invalid-feedback" v-if="validation.invalid.record_type">{{ validation.invalid.record_type }}</div>
+                                    </div>
+                                    <div class="col-md6"></div>
+                                    <div class="col-md-6 field pt-4">
+                                        <input class="form-control" id="file" ref="myFiles" @change="previewFiles" type="file"/>
+                                        <img class="pt-2 rounded" style="height:150px;" v-if="url" :src="url" alt="profile"/>
                                     </div>
                                     <div class="col-md-12 field pt-4">
                                         <button class="btn btn-primary margin-bottom pl-0" type="submit"> Submit</button>

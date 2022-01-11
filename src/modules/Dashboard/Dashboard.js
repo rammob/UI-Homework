@@ -9,29 +9,31 @@ export default {
   data() {
     return {
         indication_plus : [],
+        totalCases: '',
+        cases : []
       }
   },
   methods: {
     refreshData() {
       httpAxios({
-        url: '/case_count',
+        url: 'submit_case/case_count/',
         method: 'GET',
       }).then(async (response) => {
           this.indication_plus = response.data;
-          console.log(this.indication_plus)
+
+      });
+      httpAxios({
+        url: '/submit_case/get_all_submit_case_by_user/',
+        method: 'GET',
+      }).then(async (response) => {
+        this.cases = response.data;
       });
     },
-  //   sortedArray: function() {
-  //     function compare(a, b) {
-  //       if (a.id > b.id)
-  //         return -1;
-  //       if (a.id < b.id)
-  //         return 1;
-  //       return 0;
-  //     }
-  //     return this.indication_plus.sort(compare);
-  //   },
-  // },
+  },
+  computed: {
+    totalRequest() {
+      return Object.values(this.indication_plus).reduce((a, b) => a + b, 0);
+    }
   },
   mounted() {
     this.refreshData();
