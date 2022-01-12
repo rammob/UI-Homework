@@ -35,6 +35,7 @@ export default {
         "email": self.email,
         "password": self.password,
         "phone": "+85512345221",
+        "type" : 'Admin'
       };
       httpAxios({
         url: '/user/register',

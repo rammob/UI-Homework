@@ -76,7 +76,7 @@ export default {
                 this.validation.invalid.land_area = 'Require Field Land Area';
             }
             const data = {
-                "owner_id": 2,
+                "owner_id": 16,
                 "street_no": self.street_no ?? '',
                 "house_no": self.house_no ?? '',
                 "address": self.address ?? '',
@@ -86,8 +86,6 @@ export default {
                 "description": self.description ?? '',
                 "record_type": self.record_type ?? '',
                 "type": self.type ?? '',
-                "created_by": 2,
-                "updated_by":  2,
                 "front_side_image" : this.files,
                 "created_at": moment(String(new Date().toLocaleDateString())).format(),
                 "updated_at": moment(String(new Date().toLocaleDateString())).format(),

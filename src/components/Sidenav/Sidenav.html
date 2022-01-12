@@ -8,12 +8,23 @@
                 data-bs-toggle="dropdown" 
                 aria-expanded="false"
                 style="text-decoration:none;">
-                <!-- <img :src="require('@/assets/images/Frame.png')" alt="Logo" srcset=""/> -->
                 <h3>Indication Plus +</h3>
               </a>
             <div class="dropdown-menu bordered">
               <a class="dropdown-item" href="#" @click="logout">Logout</a>
             </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <img v-if="myProfile.profile" class="rounded-circle ml-2" style="height:60px;width:60px;" :src="'http://127.0.0.1:8000/'+myProfile.profile" />
+            </div>
+            <div class="col-8">
+              <label class="align-top" style="font-size:18px;">
+                {{myProfile.name}}
+                <a class="" style="font-size:14px;text-decoration:none;" href="#" @click="logout">Logout</a>
+              </label>
+            </div>
+            
           </div>
         </div>
         <div class="toggler">
@@ -22,33 +33,40 @@
       </div>
     </div>
     <div class="sidebar-menu">
-      <ul class="menu">
-        <li class="sidebar-title">Menu</li>
+        <ul class="menu ">
+          <li id="dashboard" class="sidebar-item">
+            <a href="http://localhost:8080/admin/Dashboard" class="sidebar-link">
+              <i class="fas fa-tachometer-alt"></i>
+              <span>Dashboard</span>
+            </a>
 
-        <li id="dashboard" class="sidebar-item">
-          <a href="http://localhost:8080/admin/Dashboard" class="sidebar-link">
-            <i class="fas fa-tachometer-alt"></i>
-            <span>Dashboard</span>
-          </a>
-        </li>
+          </li>
 
-        <li id="case" class="sidebar-item">
-          <a href="http://localhost:8080/admin/indication-plus" class="sidebar-link">
-            <i class="fas fa-home"></i>
-            <span>Indication Plus</span>
-          </a>
-        </li>
-
-        <li id="user" class="sidebar-item">
-          <a href="http://localhost:8080/admin/users" class="sidebar-link">
-            <i class="fas fa-user-friends"></i>
-            <span>User</span>
-          </a>
-          <!-- <div class="dropdown-menu">
-            <a class="dropdown-item" href="#" @click="logout">Logout</a>
-          </div> -->
-        </li>
-      </ul>
+          <li id="case" class="sidebar-item">
+            <a href="http://localhost:8080/admin/indication-plus" class="sidebar-link">
+              <i class="fas fa-home"></i>
+              <span>Indication Plus</span>
+            </a>
+          </li>
+          <li id="case-create" class="sidebar-item">
+            <a href="http://localhost:8080/admin/indication-plus/create" class="sidebar-link">
+              <i class="far fa-plus-square"></i>
+              <span>Create Indication</span>
+            </a>
+          </li>
+          <li id="user" class="sidebar-item">
+            <a href="http://localhost:8080/admin/users" class="sidebar-link">
+              <i class="fas fa-user-friends"></i>
+              <span>User</span>
+            </a>
+          </li>
+          <li id="user-create" class="sidebar-item">
+            <a href="http://localhost:8080/admin/user/create" class="sidebar-link">
+              <i class="far fa-plus-square"></i>
+              <span>Create User</span>
+            </a>
+          </li>
+        </ul>
     </div>
     <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
     <div class="ps__rail-x" style="left: 0px; bottom: 0px">

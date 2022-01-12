@@ -60,7 +60,7 @@ export default {
                 "password": self.password,
                 "phone": "+85512345221",
                 "profile": this.files,
-                "type" : self.types
+                "type" : 'Admin'
 
             };
             httpAxios({
@@ -78,8 +78,9 @@ export default {
                   }else if(response.data == "Email: "+ this.email +" already exist"){
                     this.validation.invalid.email = response.data;
                   }else{
-                    this.$router.back();
+                    // this.$router.back();
                   } 
+                  console.log(response.data)
               });
         },
     },

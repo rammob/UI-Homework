@@ -19,14 +19,18 @@ export default {
         url: 'submit_case/case_count/',
         method: 'GET',
       }).then(async (response) => {
+        if(response.data != "Error: 'NoneType' object has no attribute 'type'"){
           this.indication_plus = response.data;
+        }
 
       });
       httpAxios({
         url: '/submit_case/get_all_submit_case_by_user/',
         method: 'GET',
       }).then(async (response) => {
-        this.cases = response.data;
+        if(response.data != "Error: 'NoneType' object has no attribute 'type'"){
+          this.cases = response.data;
+        }
       });
     },
   },

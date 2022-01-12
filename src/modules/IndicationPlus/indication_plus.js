@@ -36,11 +36,13 @@ export default {
         url: '/submit_case/get_all_submit_case_by_user/',
         method: 'GET',
       }).then(async (response) => {
+        if(response.data != "Error: 'NoneType' object has no attribute 'type'"){
           response.data.forEach((e,i) => {
               response.data[i].due_date = moment(String(e.due_date)).format("MMM Do YY");
               response.data[i].created_at = moment(String(e.created_at)).format("MMM Do YY");
           });
           this.indication_plus = response.data;
+        }
       });
     },
     deleteItem(id){
